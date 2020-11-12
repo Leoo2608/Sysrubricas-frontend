@@ -1,0 +1,8 @@
+.center{
+    display: flex;
+    justify-content: center;
+}
+.color-upeu{
+    background-color: #7b1038;
+    color: white;
+}

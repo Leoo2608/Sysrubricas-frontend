@@ -1,0 +1,36 @@
+<div class="center">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Plan</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let linea of lineas; let i = index" >
+        <td> {{i+1}} </td>
+        <td hidden > {{linea.ID_LINEA}} </td>
+        <td> {{linea.NOMBRE}}</td>
+        <td> {{linea.ID_PLAN}} </td>
+        <td> {{linea.ESTADO}} </td>
+        <td>
+            <button class="btn" [routerLink]="['/linea/editar', linea.ID_LINEA]">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+        </td>
+        <td>
+            <button class="btn" (click)="delLinea(linea.ID_LINEA)">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="center">
+  <button class="color-upeu btn" [routerLink]="['/linea/agregar']">Registrar Línea</button>
+</div>

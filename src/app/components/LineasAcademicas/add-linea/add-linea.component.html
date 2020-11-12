@@ -1,0 +1,15 @@
+<div class="center">
+    <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Nombre</label>
+          <input [(ngModel)]="lineaModel.nombre" name="nombre" class="form-control"  placeholder="Nombre de Línea">
+          <small id="emailHelp" class="form-text text-muted">Ejemplo: Gestión de TI.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">ID_Plan</label>
+          <input  [(ngModel)]="lineaModel.id_plan" name="id_plan" class="form-control" placeholder="ID de Plan Académico">
+        </div>
+        <button  (click)="create()" type="submit" class="btn color-upeu">Agregar</button>
+        <button  class="color-upeu btn" routerLink="/linea/listar">Cancelar</button>
+    </form>
+</div>
