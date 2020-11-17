@@ -1,0 +1,19 @@
+.login{
+    width: 400px;
+    margin-top: 1em;
+}
+.titulo-login{
+    display: flex;
+    justify-content: center;
+    margin-top: 8em;
+    color: #680d2e;
+}
+.btn{
+    background-color: #7b1038;
+    border-color: #680d2e;
+    color: white;
+}
+.btn:hover{
+    background-color: #490a21;
+    color: rgb(255, 255, 255);
+}
