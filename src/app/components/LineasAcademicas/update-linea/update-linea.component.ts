@@ -17,7 +17,6 @@ export class UpdateLineaComponent implements OnInit {
   }
   public prueba():void{
     console.log("Este es el ID: "+parseInt(this.activatedRoute.snapshot.params['id']));
-    
   }
   public update():void{
     Swal.fire({

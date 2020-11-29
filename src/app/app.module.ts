@@ -10,6 +10,14 @@ import { ListarLineaComponent } from './components/LineasAcademicas/listar-linea
 import { UpdateLineaComponent } from './components/LineasAcademicas/update-linea/update-linea.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListarPlanComponent } from './components/PlanAcademico/listar-plan/listar-plan.component';
+import { AddPlanComponent } from './components/PlanAcademico/add-plan/add-plan.component';
+import { UpdatePlanComponent } from './components/PlanAcademico/update-plan/update-plan.component';
+import { ModuloConfigComponent } from './components/Modulos/modulo-config/modulo-config.component';
+import { MenuComponent } from './components/template/menu/menu.component';
+import { FooterComponent } from './components/template/footer/footer.component';
+import { PlanLineaComponent } from './components/PlanLinea/plan-linea/plan-linea.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +26,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     AddLineaComponent,
     ListarLineaComponent,
-    UpdateLineaComponent
+    UpdateLineaComponent,
+    ListarPlanComponent,
+    AddPlanComponent,
+    UpdatePlanComponent,
+    ModuloConfigComponent,
+    MenuComponent,
+    FooterComponent,
+    PlanLineaComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +41,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    HomeComponent,
+    ModuloConfigComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,16 +10,16 @@ export class LineaAcademicaService {
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
   private url: string = 'http://localhost:9090/api';
   constructor(private http: HttpClient) { }
+  
   getLineasAcademicas(): Observable<LineaAcademica[]>{
     return this.http.get<LineaAcademica[]>(this.url+'/lineas');
   }
   
   getLineaAcademica(id:number):Observable<Object>{
-    return this.http.get(`${this.url}/${id}`);
+    return this.http.get(this.url+'/lineas/'+id);
   }
 
   addLineaAcademica(linea: LineaAcademica): Observable<number>{
-
     return this.http.post<number>(this.url+'/lineas/add', linea, {headers:this.httpHeaders});
   }
   

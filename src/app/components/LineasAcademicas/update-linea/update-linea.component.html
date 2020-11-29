@@ -4,11 +4,6 @@
           <label for="exampleInputEmail1">Nombre</label>
           <input [(ngModel)]="lineaModel.nombre" name="nombre" class="form-control"  placeholder="Nombre de Línea ">
         </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">ID_Plan</label>
-          <input  [(ngModel)]="lineaModel.id_plan" name="id_plan" class="form-control" placeholder="ID del Plan Académico">
-        </div>
-        
         <div>
             <button  class="color-upeu btn" (click)="update()" type="submit">Actualizar</button>
             <button  class="color-upeu btn" routerLink="/linea/listar">Cancelar</button>

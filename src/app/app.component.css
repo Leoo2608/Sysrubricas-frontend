@@ -1,3 +1,9 @@
-.logo{
-    background-repeat: no-repeat;
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+.login{
+    font-family: 'Heebo', sans-serif;
 }
+.home{
+    font-family: 'Heebo', sans-serif;
+}
+

@@ -1,0 +1,14 @@
+.color-upeu{
+    background-color: #7b1038;
+    color: white;
+}
+.cont{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.color-upeu-letras{
+    color: #5a0725;
+    font-weight: bold;
+    font-size: 15px;
+}

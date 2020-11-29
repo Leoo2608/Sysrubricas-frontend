@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand color-upeu-letras">SisGev G1</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a *ngIf="isModConf()" class="navbar-brand color-upeu-letras" style="font-size: 15px;"> |&nbsp;&nbsp;Configuración del Proceso de Evaluación y del Perfil de Egreso</a>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link color-upeu-letras" [routerLink]="['/home']"> Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li *ngIf="isModConf()" class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle color-upeu-letras" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Opciones
+          </a>
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['/moduloconfig/plan/listar']">Planes Académicos</a>
+            <a class="dropdown-item" [routerLink]="['/moduloconfig/linea/listar']">Líneas Académicas</a>   
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/moduloconfig/planlinea/listar']">Planes - Líneas</a>   
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav dropleft">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle color-upeu-letras" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Usuario
+            <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-person-square ml-1 mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+              <path fill-rule="evenodd" d="M2 15v-1c0-1 1-4 6-4s6 3 6 4v1H2zm6-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            </svg>
+          </a>
+          <div class="dropdown-menu menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item">
+              <div style="display: flex; justify-content: center;">
+                <img src="../../../../assets/img/LogoUser.jpg" width="100px" height="100px">
+              </div>
+            </a>
+            <div class="container cont-info-user">
+              <a class="info-user mt-2">Nombres: Nombre De Ejemplo 12345</a>
+              <a class="info-user mt-2">Rol: Administrador</a>   
+            </div>
+            <div class="dropdown-divider"></div>
+            <button class="btn">
+              <a class="dropdown-item">Configuración</a>
+              <a class="dropdown-item">Salir</a>
+            </button>
+           
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
