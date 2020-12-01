@@ -17,6 +17,7 @@ import { ModuloConfigComponent } from './components/Modulos/modulo-config/modulo
 import { MenuComponent } from './components/template/menu/menu.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { PlanLineaComponent } from './components/PlanLinea/plan-linea/plan-linea.component';
+import { UnidadAcademicaComponent } from './components/UnidadAcademica/unidad-academica/unidad-academica.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { PlanLineaComponent } from './components/PlanLinea/plan-linea/plan-linea
     ModuloConfigComponent,
     MenuComponent,
     FooterComponent,
-    PlanLineaComponent
+    PlanLineaComponent,
+    UnidadAcademicaComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { PlanLineaComponent } from './components/PlanLinea/plan-linea/plan-linea
   ],
   providers: [
     HomeComponent,
-    ModuloConfigComponent
+    ModuloConfigComponent,
+    UnidadAcademicaComponent
   ],
   bootstrap: [AppComponent]
 })

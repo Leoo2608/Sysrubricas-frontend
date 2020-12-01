@@ -26,4 +26,7 @@ export class PlanAcademicoService {
   updatePlanAcademico(plan: PlanAcademico, id:number):Observable<number>{
     return this.http.put<number>(this.url+'/planes/update/'+id,plan,{headers:this.httpHeaders});
   }
+  getPlanesAcademicosxUnidad(id:number): Observable<PlanAcademico[]>{
+    return this.http.get<PlanAcademico[]>(this.url+'/planes/xunidad/'+id);
+  }
 }

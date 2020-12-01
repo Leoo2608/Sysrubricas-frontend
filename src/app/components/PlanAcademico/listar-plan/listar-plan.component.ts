@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PlanAcademico } from 'src/app/models/plan-academico';
 import { PlanAcademicoService } from 'src/app/services/plan-academico.service';
+import { UnidadAcademicaService } from 'src/app/services/unidad-academica.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,13 +13,61 @@ import Swal from 'sweetalert2';
 export class ListarPlanComponent implements OnInit {
   planes:any;
   planModel: PlanAcademico = new PlanAcademico();
-  constructor(private planService:PlanAcademicoService, private router:Router) { }
 
-  ngOnInit(): void {
-    this.listarPlanes();
+  constructor(private unidadService:UnidadAcademicaService ,private planService:PlanAcademicoService, private router:Router) { 
   }
-  listarPlanes():void{
-    this.planService.getPlanesAcademicos().subscribe(
+  ngOnInit(): void {
+    this.traerCampus();
+  }
+  /*Filtros*/
+  campus:any;
+  facultades:any;
+  escuelas:any;
+  nom:string;
+  
+  traerCampus(){
+    this.unidadService.getCampus().subscribe((data)=>{
+        this.campus = data['CURSOR_U'];
+        console.log(this.campus)
+      }
+    )
+  }
+  
+  traerFacultad(value:any){
+    console.log('Activado, Resultado:')
+    console.log(value);
+    this.unidadService.getFacultad(value).subscribe(
+      (data)=>{
+        const filtered = data['CURSOR_U'].filter(function (el) {
+
+          return el.FACULTADES != null;
+        });
+        this.facultades = filtered;
+        console.log(this.facultades)
+      }
+    )
+  }
+
+  traerEscuela(value){
+    console.log('Activado, Resultado:')
+    console.log(value);
+    this.unidadService.getEscuela(value).subscribe(
+      (data)=>{
+        this.escuelas = data['CURSOR_U']
+        console.log(this.escuelas)
+      }
+    )
+  }
+  filtrado = "No";
+  filt(){
+    this.filtrado = "Si";
+  }
+  /*Filtros*/
+  idunidad = null;
+  listarPlanes(value){
+    this.idunidad = value;
+    console.log('consegui el idunidad'+this.idunidad)
+    this.planService.getPlanesAcademicosxUnidad(value).subscribe(
       (data)=>{
         this.planes = data['CURSOR_P'];
         console.log(this.planes);
@@ -49,7 +98,7 @@ export class ListarPlanComponent implements OnInit {
           this.planService.deletePlanAcademico(num).subscribe(
             response=>{
               console.log(response)
-              this.listarPlanes();
+              this.listarPlanes(this.idunidad);
             }
           )
         }
@@ -58,6 +107,7 @@ export class ListarPlanComponent implements OnInit {
   
   }
   create():void{
+    this.planModel.idunidad = this.idunidad;
     this.planService.addPlanAcademico(this.planModel).subscribe(
       response=>{
         Swal.fire('Nuevo Plan', `El Plan ${this.planModel.nombre} ha sido creado con exito`, "success")
@@ -65,8 +115,8 @@ export class ListarPlanComponent implements OnInit {
         console.log(response);
       }
     )
-    this.listarPlanes(); // actualiza el listado
     this.limpiar();
+    this.listarPlanes(this.idunidad); // actualiza el listado
   }
   cargarPlan(num:number):void{
     this.showButtonsUpdate = 'Si';
@@ -76,7 +126,6 @@ export class ListarPlanComponent implements OnInit {
       this.planes=data['CURSOR_P'] 
       this.planModel.idplan=this.planes[0].IDPLAN;
       this.planModel.nombre=this.planes[0].NOMBRE;
-      this.planModel.idunidad=this.planes[0].IDUNIDAD;
       this.planModel.ciclos=this.planes[0].CICLOS;
       this.planModel.cursos=this.planes[0].CURSOS;
       this.planModel.creditos=this.planes[0].CREDITOS;
@@ -98,19 +147,19 @@ export class ListarPlanComponent implements OnInit {
         (result)=>{
           console.log(this.planModel.idplan)
           if(result.isConfirmed){
-            this.listarPlanes(); // actualiza el listado
             Swal.fire(
               'Actualizado!',
               'El registro ha sido actualizado.',
               'success'
               )
+              this.planModel.idunidad = this.idunidad;
               this.planService.updatePlanAcademico(this.planModel, this.planModel.idplan).subscribe(
                 response=>{
                   console.log(this.planModel);
                   console.log(response);
                 }
               ) 
-              this.cancelar();          
+              this.cancelar();
             }
           }   
     )
@@ -118,12 +167,11 @@ export class ListarPlanComponent implements OnInit {
   cancelar(){
     this.showButtonsUpdate = 'No';
     this.showButtonAdd = 'Si';
-    this.listarPlanes();
+    this.listarPlanes(this.idunidad);
     this.limpiar();
   }
   limpiar(){
     this.planModel.nombre = "";
-    this.planModel.idunidad = null;
     this.planModel.ciclos = null;
     this.planModel.cursos = null;
     this.planModel.creditos = null;

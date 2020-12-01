@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
   templateUrl: './listar-linea.component.html',
   styleUrls: ['./listar-linea.component.css']
 })
+
 export class ListarLineaComponent implements OnInit {
   lineas: any;
  
@@ -18,9 +19,11 @@ export class ListarLineaComponent implements OnInit {
 
   ngOnInit(): void { 
     this.listarLinea(); 
+    
   }
 
   /*Listar*/
+  
   listarLinea():void{
     this.lineaService.getLineasAcademicas().subscribe(
       (data) =>{
